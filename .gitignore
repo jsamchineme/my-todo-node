@@ -1,0 +1,13 @@
+# Check https://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+
+# files
+.env
+.coveralls.yml
+
+# folders
+.nyc_output
+.vscode
+coverage
