@@ -1,4 +1,4 @@
-{
+module.exports = {
   "root": true,
   "extends": "airbnb-base",
   "env": {
@@ -18,7 +18,8 @@
     "comma-dangle": 0,
     "class-methods-use-this": 0,
     "curly": ["error", "multi-line"],
-    "import/no-unresolved": [2, { "commonjs": true }],
+    "import/named": 0,
+    "import/no-unresolved": [2, {"commonjs": true}],
     "no-shadow": ["error", { "allow": ["req", "res", "err"] }],
     "valid-jsdoc": ["error", {
       "requireReturn": true,

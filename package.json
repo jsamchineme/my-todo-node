@@ -1,12 +1,17 @@
 {
-  "name": "postgre-express-react-node-tutorial",
+  "name": "my-todo-node",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "babel-node ./bin/www",
     "start:dev": "nodemon --exec babel-node ./bin/www",
-    "test": "nyc --reporter=html --reporter=text mocha --timeout 500000 --exit js:babel-core/register  server/specs/",
-    "coverage": "nyc report --reporter=text-lcov | coveralls"
+    "test": "npm run migrate && nyc --reporter=html --reporter=text mocha --timeout 500000 --exit --require babel-core/register  server/specs/ && npm run migration:reset",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "lint": "eslint --fix server",
+    "migration:reset": "sequelize db:migrate:undo:all",
+    "migrate": "npm run migration:reset && sequelize db:migrate",
+    "set-env:test": "node server/specs/set-env.js"
   },
   "keywords": [],
   "author": "",
@@ -37,11 +42,13 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
+    "co-mocha": "^1.2.2",
     "coveralls": "^3.0.2",
     "cross-env": "^5.2.0",
     "eslint": "^5.5.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
+    "node-env-run": "^3.0.2",
     "nodemon": "^1.17.4",
     "nyc": "^13.0.1"
   }
