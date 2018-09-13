@@ -11,6 +11,7 @@ env:
   global:
   - CC_TEST_REPOTER_ID=580955ed065406ed35f4f19040635404ce4c29bc123495e9a9a9a134621a1d4c
   - NODE_ENV=development
+  - DEV_URL=postgres://cavewpwl:UNdoQyxMkVO-hOD25m2Hzq7wwWtcQ8Vm@pellefant.db.elephantsql.com:5432/cavewpwl
 before_script:
   - npm install
   - npm install coveralls --save-dev
