@@ -10,7 +10,9 @@ services:
 env:
   global:
   - CC_TEST_REPOTER_ID=580955ed065406ed35f4f19040635404ce4c29bc123495e9a9a9a134621a1d4c
+  - NODE_ENV=development
 before_script:
+  - createdb todos_dev
   - npm install
   - npm install coveralls --save-dev
   - npm install mocha-lcov-reporter --save-dev
