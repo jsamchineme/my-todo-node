@@ -17,9 +17,9 @@ engines:
       - BUG
       - CUSTOM
 exclude_patherns:
-- node_modules/
-- .nyc_output
-- coverage
-- server/specs/
-- .vscode
-- bin
+- "node_modules/"
+- ".nyc_output"
+- "coverage"
+- "server/specs/"
+- ".vscode"
+- "bin"
