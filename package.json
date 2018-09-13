@@ -6,11 +6,11 @@
   "scripts": {
     "start": "babel-node ./bin/www",
     "start:dev": "nodemon --exec babel-node ./bin/www",
-    "test": "npm run migrate && nyc --reporter=html --reporter=text mocha --timeout 500000 --exit --require babel-core/register  server/specs/ && npm run migration:reset",
+    "test": "npm run migrate && nyc --reporter=html --reporter=text mocha --timeout 500000 --exit --require babel-core/register  server/specs/",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint --fix server",
     "migration:reset": "sequelize db:migrate:undo:all",
-    "migrate": "npm run migration:reset && sequelize db:migrate",
+    "migrate": "sequelize db:migrate",
     "set-env:test": "node server/specs/set-env.js"
   },
   "keywords": [],
