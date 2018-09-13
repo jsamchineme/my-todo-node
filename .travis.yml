@@ -16,6 +16,7 @@ before_script:
   - npm install mocha-lcov-reporter --save-dev
   - npm install supertest
   - yarn global add nyc
+  - yarn global add sequelize
   - npm run migrate
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
