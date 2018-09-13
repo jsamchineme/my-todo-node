@@ -5,7 +5,7 @@ dotenv.config();
 module.exports = {
   development: {
     use_env_variable: 'DEV_URL',
-    url: process.env.DEV_URL,
+    url: 'postgres://cavewpwl:UNdoQyxMkVO-hOD25m2Hzq7wwWtcQ8Vm@pellefant.db.elephantsql.com:5432/cavewpwl',
     dialect: 'postgres'
   },
   test: {
