@@ -1,0 +1,29 @@
+sudo: required
+language: node_js
+node_js:
+  - "node"
+cache:
+  directories:
+    - "node_modules"
+services:
+  - postgresql
+env:
+  global:
+  - CC_TEST_REPOTER_ID=580955ed065406ed35f4f19040635404ce4c29bc123495e9a9a9a134621a1d4c
+before_script:
+  - npm install
+  - npm install coveralls --save-dev
+  - npm install mocha-lcov-reporter --save-dev
+  - npm install supertest
+  - yarn global add nyc
+  - npm run migrate
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+script:
+  - npm test
+  - nyc --reporter=lcov yarn run test
+
+after_success:
+  - npm run coveralls
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT

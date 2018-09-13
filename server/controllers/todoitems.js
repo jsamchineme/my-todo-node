@@ -8,7 +8,7 @@ module.exports = {
         todoId: req.params.todoId
       })
       .then(todoItem => res.status(201).json({ data: todoItem }))
-      .catch(error => res.status(400).json({ message: 'failed', error }));
+      .catch(error => res.status(400).send(error));
   },
   update(req, res) {
     return TodoItem
@@ -21,8 +21,8 @@ module.exports = {
       .then(todoItem => todoItem
         .update(req.body, { fields: Object.keys(req.body) })
         .then(updatedTodoItem => res.status(200).json({ data: updatedTodoItem }))
-        .catch(error => res.status(400).json({ message: 'failed', error })))
-      .catch(error => res.status(400).json({ message: 'failed', error }));
+        .catch(() => res.status(400)))
+      .catch(error => res.status(400).send(error));
   },
   destroy(req, res) {
     return TodoItem
@@ -34,8 +34,8 @@ module.exports = {
       })
       .then(todoItem => todoItem
         .destroy()
-        .then(() => res.send(204).json({ message: 'deleted' }))
-        .catch(() => res.status(400).json({ message: 'failure' })))
+        .then(() => res.status(204))
+        .catch(() => res.status(400)))
       .catch(error => res.status(400).send(error));
   }
 };
