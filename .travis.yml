@@ -27,6 +27,6 @@ script:
   - npm test
   - nyc --reporter=lcov yarn run test
 
-after_success:
+after_script:
   - npm run coverage
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
