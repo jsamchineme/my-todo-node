@@ -5,9 +5,9 @@ jobs:
     docker:
       - image: circleci/node:7.8.2
       environment:
-        NODE_ENV: development
-        DEV_URL: postgres://cavewpwl:UNdoQyxMkVO-hOD25m2Hzq7wwWtcQ8Vm@pellefant.db.elephantsql.com:5432/cavewpwl
-        CC_TEST_REPORTER_ID: fc96806ee1d1888914e9e2b4f75bc153217f330a57933060d388f5c85e379c4b
+        - NODE_ENV: development
+        - DEV_URL: postgres://cavewpwl:UNdoQyxMkVO-hOD25m2Hzq7wwWtcQ8Vm@pellefant.db.elephantsql.com:5432/cavewpwl
+        - CC_TEST_REPORTER_ID: fc96806ee1d1888914e9e2b4f75bc153217f330a57933060d388f5c85e379c4b
     steps:
       - checkout
       - restore_cache:

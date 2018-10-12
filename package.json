@@ -11,7 +11,8 @@
     "lint": "eslint --fix server",
     "migration:reset": "sequelize db:migrate:undo:all",
     "migrate": "sequelize db:migrate",
-    "set-env:test": "node server/specs/set-env.js"
+    "set-env:test": "node server/specs/set-env.js",
+    "local-circleci": "set CIRCLE_TOKEN=28ce1efadd26e4ccbf7975e0b77acf3c24e8fb5e"
   },
   "keywords": [],
   "author": "",
