@@ -3,11 +3,11 @@ jobs:
   build:
     working_directory: ~/my-todo-node
     docker:
-      - image: circleci/node:7.8.2
-      environment:
-        NODE_ENV: development
-        DEV_URL: postgres://cavewpwl:UNdoQyxMkVO-hOD25m2Hzq7wwWtcQ8Vm@pellefant.db.elephantsql.com:5432/cavewpwl
-        CC_TEST_REPORTER_ID: fc96806ee1d1888914e9e2b4f75bc153217f330a57933060d388f5c85e379c4b
+      - image: circleci/node:8.9.4
+    environment:
+      - NODE_ENV: development
+      - DEV_URL: postgres://cavewpwl:UNdoQyxMkVO-hOD25m2Hzq7wwWtcQ8Vm@pellefant.db.elephantsql.com:5432/cavewpwl
+      - CC_TEST_REPORTER_ID: fc96806ee1d1888914e9e2b4f75bc153217f330a57933060d388f5c85e379c4b
     steps:
       - checkout
       - restore_cache:
@@ -15,13 +15,16 @@ jobs:
       - run:
           name: Setup Dependencies
           command: npm install
+      - run:
+          name: Setup Istanbul
+          command: sudo npm install -g nyc
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
       - run:
-          name: setup-database
-          command: npm migrate
+          name: Setup Database
+          command: npm run migrate
       - run:
           name: Setup Code Climate test-reporter
           command: |
@@ -35,5 +38,5 @@ jobs:
       - run:
           name: Send Test Report
           command: |
-            './node_modules/.bin/nyc report --reporter=text-lcov'
+            nyc report --reporter=text-lcov
             ./cc-test-reporter after-build --exit-code $?
