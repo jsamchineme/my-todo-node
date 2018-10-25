@@ -15,6 +15,8 @@ jobs:
       - run:
           name: Setup Dependencies
           command: npm install
+      - run:
+          name: Setup Istanbul
           command: sudo npm install -g nyc
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
