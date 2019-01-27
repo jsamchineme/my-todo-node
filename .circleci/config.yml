@@ -26,7 +26,7 @@ jobs:
           name: Setup Database
           command: npm run migrate
       - run:
-          name: Setup Code Climate test-reporter
+          name: Setup Code Climate Test Reporter
           command: |
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
             chmod +x ./cc-test-reporter
